@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:responsive_sample/project/routes/app_route_config.dart';
 import 'package:responsive_sample/utils/colors.dart';
 import 'package:responsive_sample/utils/device_detector_widget.dart';
 import 'package:responsive_sample/utils/styles.dart';
@@ -70,7 +72,9 @@ Widget navButton(String text) {
   return Container(
       margin: EdgeInsets.symmetric(horizontal: 4),
       child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            globalNavigatorKey.currentContext!.go("/third");
+          },
           child:
               Text(text, style: TextStyle(color: Colors.black, fontSize: 18))));
 }

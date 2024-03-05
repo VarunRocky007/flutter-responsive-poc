@@ -1,6 +1,10 @@
 
 
 //Images
+import 'dart:async';
+
+import 'package:local_session_timeout/local_session_timeout.dart';
+
 const String logo = 'assets/images/logo.png';
 const String illustration1 = 'assets/images/illustration1.png';
 const String illustration2 = 'assets/images/illustration2.png';
@@ -12,3 +16,4 @@ const String samsung = 'assets/images/samsung.png';
 const String dashboard = 'assets/images/dashboard.png';
 const String vector1 = 'assets/images/vector.png';
 const String vector2 = 'assets/images/vector1.png';
+bool isLoggedIn = true;
