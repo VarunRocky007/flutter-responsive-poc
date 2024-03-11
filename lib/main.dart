@@ -1,10 +1,11 @@
-import 'dart:async';
-
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:local_session_timeout/local_session_timeout.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_sample/project/routes/app_route_config.dart';
+import 'package:responsive_sample/project/routes/app_route_config.gr.dart';
 import 'package:responsive_sample/utils/constants.dart';
 
 void main() {
@@ -15,6 +16,7 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
+  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
     final sessionConfig = SessionConfig(
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
 
 
         print("Go to login");
-        globalNavigatorKey.currentContext!.go("/login");
+        globalNavigatorKey.currentContext!.router.replaceAll([const LoginRoute()]);
       }
     });
     return SessionTimeoutManager(
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
       sessionConfig: sessionConfig,
       child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          routerConfig: router,
+          routerConfig: _appRouter.config(),
           builder: (context, child) => ResponsiveBreakpoints.builder(
                 child: child!,
                 breakpoints: [

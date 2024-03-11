@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_sample/utils/base_page.dart';
 
+@RoutePage()
 class FourthPage extends BasePage<FourthPageState> {
   const FourthPage({super.key});
 

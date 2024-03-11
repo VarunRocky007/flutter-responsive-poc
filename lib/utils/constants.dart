@@ -16,4 +16,4 @@ const String samsung = 'assets/images/samsung.png';
 const String dashboard = 'assets/images/dashboard.png';
 const String vector1 = 'assets/images/vector.png';
 const String vector2 = 'assets/images/vector1.png';
-bool isLoggedIn = true;
+bool isLoggedIn = false;

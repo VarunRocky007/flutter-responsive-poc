@@ -1,58 +1,38 @@
-import 'package:flutter/cupertino.dart';
-import 'package:go_router/go_router.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-import 'package:responsive_sample/pages/fourth_page.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:responsive_sample/pages/home_page.dart';
-import 'package:responsive_sample/pages/login_page.dart';
-import 'package:responsive_sample/pages/third_page.dart';
+import 'package:responsive_sample/project/routes/app_route_guards.dart';
 
-import '../../utils/constants.dart';
+import 'app_route_config.gr.dart';
 
 final globalNavigatorKey = GlobalKey<NavigatorState>();
 
-NavigatorState get navigator => globalNavigatorKey.currentState!;
-final GoRouter router =
-    GoRouter(initialLocation: '/', navigatorKey: globalNavigatorKey, routes: [
-  GoRoute(
-      name: 'home',
-      path: '/',
-      builder: (context, state) {
-        return const HomePage();
-      }, redirect: (ctx,state) async {
-    if(isLoggedIn == false) {
-      return "/login";
-    }
-    return state.path;
-  },),
-  GoRoute(
-      name: 'login',
-      path: '/login',
-      builder: (context, state) {
-        return LoginPage();
-      }),
-      GoRoute(
-          name: 'third',
+@AutoRouterConfig()
+class AppRouter extends $AppRouter {
+  @override
+  GlobalKey<NavigatorState> get navigatorKey => globalNavigatorKey;
+
+  @override
+  List<AutoRoute> get routes => [
+        AutoRoute(
+          path:'/',
+          page: HomeRoute.page,
+          guards: [CheckIfUserLoggedIn()],
+          initial: true,
+        ),
+        AutoRoute(
+          path:'/login',
+          page: LoginRoute.page,
+        ),
+        AutoRoute(
           path: '/third',
-          builder: (context, state) {
-            return const ThirdPage();
-          },redirect: (ctx,state) async {
-        if(isLoggedIn == false) {
-          return "/login";
-        }
-        return state.path;
-      },),
-      GoRoute(
-          name: 'fourth',
-          path: '/fourth',
-          builder: (context, state) {
-            return const FourthPage();
-          },
-      redirect: (ctx,state) async {
-          if(isLoggedIn == false) {
-            return "/login";
-          }
-          return state.path;
-      },),
-]);
-
-
+          page: ThirdRoute.page,
+          guards: [CheckIfUserLoggedIn()],
+        ),
+        AutoRoute(
+          path:'/fourth',
+          page: FourthRoute.page,
+          guards: [CheckIfUserLoggedIn()],
+        )
+      ];
+}

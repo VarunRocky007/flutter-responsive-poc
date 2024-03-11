@@ -39,9 +39,12 @@ dependencies:
   responsive_builder: ^0.7.0
   go_router: ^13.2.0
   local_session_timeout: ^2.3.2
+  auto_route: ^7.8.4
   entry: ^0.0.9
 
 dev_dependencies:
+  auto_route_generator: ^7.1.1
+  build_runner: ^2.4.8
   flutter_test:
     sdk: flutter
 

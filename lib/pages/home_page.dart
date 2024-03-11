@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sample/pages/container1.dart';
 import 'package:responsive_sample/pages/container2.dart';
@@ -11,6 +12,7 @@ import 'package:responsive_sample/utils/base_page.dart';
 import 'package:responsive_sample/utils/device_detector_widget.dart';
 import 'package:responsive_sample/utils/navBar.dart';
 
+@RoutePage()
 class HomePage extends BasePage<HomePageState> {
   const HomePage({super.key});
 

@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:responsive_sample/project/routes/app_route_config.dart';
+import 'package:responsive_sample/project/routes/app_route_config.gr.dart';
 import 'package:responsive_sample/utils/colors.dart';
 import 'package:responsive_sample/utils/device_detector_widget.dart';
 import 'package:responsive_sample/utils/styles.dart';
@@ -32,7 +34,15 @@ Widget MobileNavBar() {
     height: 70,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [Icon(Icons.menu), navLogo()],
+      children: [
+        GestureDetector(
+          child: const Icon(Icons.menu),
+          onTap: () {
+            globalNavigatorKey.currentContext!.router.pushNamed("/third");
+          },
+        ),
+        navLogo()
+      ],
     ),
   );
 }
@@ -73,7 +83,7 @@ Widget navButton(String text) {
       margin: EdgeInsets.symmetric(horizontal: 4),
       child: TextButton(
           onPressed: () {
-            globalNavigatorKey.currentContext!.go("/third");
+            globalNavigatorKey.currentContext!.router.pushNamed("/third");
           },
           child:
               Text(text, style: TextStyle(color: Colors.black, fontSize: 18))));
