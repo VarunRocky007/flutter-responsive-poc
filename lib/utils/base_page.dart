@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:local_session_timeout/local_session_timeout.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:responsive_sample/project/routes/app_route_config.dart';
 
 abstract class BasePage<T extends BasePageState> extends StatefulWidget {
   const BasePage({super.key});

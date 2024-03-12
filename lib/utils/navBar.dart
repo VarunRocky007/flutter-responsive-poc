@@ -1,9 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 import 'package:responsive_sample/project/routes/app_route_config.dart';
-import 'package:responsive_sample/project/routes/app_route_config.gr.dart';
 import 'package:responsive_sample/utils/colors.dart';
 import 'package:responsive_sample/utils/device_detector_widget.dart';
 import 'package:responsive_sample/utils/styles.dart';
